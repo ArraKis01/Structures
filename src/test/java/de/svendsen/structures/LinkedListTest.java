@@ -22,7 +22,7 @@ public class LinkedListTest {
     public void fillEqually() {
         random = new Random();
         toCompare = new ArrayList<>();
-        toTest = new BabaList<>();
+        toTest = new LinkedList<>();
 
         for (int i = 0; i < TEST_LIST_SIZE; i++) {
             int n = random.nextInt();
