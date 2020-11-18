@@ -73,6 +73,28 @@ public class LinkedListTest {
     }
 
     @Test
+    public void randomAddTesT() {
+        for (int i = 0; i < TEST_LIST_SIZE; i++) {
+            int huhu = random.nextInt();
+            switch (random.nextInt(2)) {
+                case 0:
+                    addFirst(huhu);
+                    break;
+                case 1:
+                    addLast(huhu);
+                    break;
+                case 2:
+                    addRandomIndex(huhu);
+                    break;
+                case 3:
+                    throw new TestAbortedException("should not happen");
+            }
+        }
+
+        assertIsSameList();
+    }
+
+    @Test
     public void removeAllLast() {
         for (int i = 0; i < TEST_LIST_SIZE; i++) {
             removeLastIndex();
