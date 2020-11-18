@@ -32,6 +32,11 @@ public class LinkedList<E> implements List<E> {
     public void add(int index, E element) {
         if (index >= size() || index < 0) {
             throw new IndexOutOfBoundsException();
+        } else if (index == 0) {
+            ListNode node = new ListNode();
+            node.data = element;
+            node.next = head;
+            head = node;
         } else {
             ListNode node = head;
             for (int i = 0; i < index-1; i++) {
