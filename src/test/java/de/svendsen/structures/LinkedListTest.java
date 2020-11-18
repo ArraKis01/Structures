@@ -22,7 +22,7 @@ public class LinkedListTest {
     public void fillEqually() {
         random = new Random();
         toCompare = new ArrayList<>();
-        toTest = new BabaList<>();
+        toTest = new LinkedList<>();
 
         for (int i = 0; i < TEST_LIST_SIZE; i++) {
             int n = random.nextInt();
@@ -67,6 +67,28 @@ public class LinkedListTest {
     public void removeAllFrist() {
         for (int i = 0; i < TEST_LIST_SIZE; i++) {
             removeFirst();
+        }
+
+        assertIsSameList();
+    }
+
+    @Test
+    public void randomAddTesT() {
+        for (int i = 0; i < TEST_LIST_SIZE; i++) {
+            int huhu = random.nextInt();
+            switch (random.nextInt(2)) {
+                case 0:
+                    addFirst(huhu);
+                    break;
+                case 1:
+                    addLast(huhu);
+                    break;
+                case 2:
+                    addRandomIndex(huhu);
+                    break;
+                case 3:
+                    throw new TestAbortedException("should not happen");
+            }
         }
 
         assertIsSameList();
