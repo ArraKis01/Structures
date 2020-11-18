@@ -20,6 +20,16 @@ public class App {
         System.out.println(list.get(0));
         System.out.println(list.get(1));
         System.out.println(list.get(2));
+        
+        System.out.println("NEW TEST:");
+
+        list.add(2, 420);
+        System.out.println(list.get(0));
+        System.out.println(list.get(1));
+        System.out.println(list.get(2));
         System.out.println(list.get(3));
+        System.out.println(list);
+
+        
     }
 }

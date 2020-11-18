@@ -30,7 +30,18 @@ public class LinkedList<E> implements List<E> {
      */
     @Override
     public void add(int index, E element) {
-        
+        if (index >= size() || index < 0) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            ListNode node = head;
+            for (int i = 0; i < index-1; i++) {
+                node = node.next;
+            }
+            ListNode temp = new ListNode();
+            temp.data = element;
+            temp.next = node.next;
+            node.next = temp;
+        }
     }
 
     @Override
@@ -57,7 +68,15 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public void remove(int index) {
-        // TODO Auto-generated method stub
+        if (index >= size() || index < 0) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            ListNode node = head;
+            for (int i = 0; i < index-1; i++) {
+                node = node.next;
+            }
+            
+        }
 
     }
 
