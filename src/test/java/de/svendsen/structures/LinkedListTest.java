@@ -30,6 +30,18 @@ public class LinkedListTest {
             toTest.add(n);
         }
     }
+    @Test
+    public void iterateOver() {
+        int testSum = 0;
+        int compareSum = 0;
+        for (Integer integer : toTest) {
+            testSum += integer;
+        }
+        for (Integer integer : toCompare) {
+            compareSum += integer;
+        }
+        assertEquals(testSum, compareSum);
+    }
 
     @Test
     public void shouldBeEqual() {

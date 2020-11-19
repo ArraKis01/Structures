@@ -1,5 +1,8 @@
 package de.svendsen.structures;
 
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
 public class LinkedList<E> implements List<E> {
 
     private ListNode head;
@@ -15,7 +18,7 @@ public class LinkedList<E> implements List<E> {
     public void add(E element) {
         add(size(), element);
     }
-    
+
     @Override
     public void add(int index, E element) {
         if (index > size() || index < 0) {
@@ -26,7 +29,7 @@ public class LinkedList<E> implements List<E> {
             node.next = head;
             head = node;
         } else {
-            ListNode node = getNode(index-1);
+            ListNode node = getNode(index - 1);
             ListNode temp = new ListNode();
             temp.data = element;
             temp.next = node.next;
@@ -80,20 +83,39 @@ public class LinkedList<E> implements List<E> {
         if (isEmpty()) {
             sb.append("[ ]");
         } else {
-            for (int i = 0; i < size()-1; i++) {
+            for (int i = 0; i < size() - 1; i++) {
                 sb.append("[" + get(i) + "] ");
             }
-            sb.append("[" + get(size()-1) + "]");
+            sb.append("[" + get(size() - 1) + "]");
         }
         return sb.toString();
     }
-    
+
     private ListNode getNode(int index) {
         ListNode node = head;
-        if (index < 0) return null;
+        if (index < 0)
+            return null;
         for (int i = 0; i < index; i++) {
             node = node.next;
         }
         return node;
+    }
+
+    @Override
+    public Iterator<E> iterator() {
+        return new Iterator<E>() {
+            ListNode node = head;
+            
+            public boolean hasNext() {
+                return node != null;
+            }
+
+            public E next() {
+                if (node == null) throw new NoSuchElementException();
+                E data = node.data;
+                node = node.next;
+                return data;
+            }
+        };
     }
 }
