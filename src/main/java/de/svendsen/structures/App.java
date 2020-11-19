@@ -8,12 +8,15 @@ public class App {
     public static void main(String[] args) {
 
         List<Integer> list = new LinkedList<>();
+        System.out.println(list);
         System.out.println(list.isEmpty());
         System.out.println(list.size());
         
         list.add(10);
         list.add(11);
         list.add(69);
+
+        System.out.println(list);
 
         System.out.println(list.isEmpty());
         System.out.println(list.size());
@@ -38,5 +41,9 @@ public class App {
         System.out.println(list.get(2));
         System.out.println(list.get(3));
         System.out.println(list.get(4));
+
+        list.remove(0);
+
+        System.out.println(list.size());
     }
 }

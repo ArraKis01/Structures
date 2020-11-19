@@ -3,6 +3,7 @@ package de.svendsen.structures;
 public class LinkedList<E> implements List<E> {
 
     private ListNode head;
+    private int size;
 
     private class ListNode {
         private ListNode next;
@@ -31,6 +32,7 @@ public class LinkedList<E> implements List<E> {
             temp.next = node.next;
             node.next = temp;
         }
+        size++;
     }
 
     @Override
@@ -47,11 +49,7 @@ public class LinkedList<E> implements List<E> {
         return head == null;
     }
 
-    // handle index out of bounds exception DONE
-    // fix linking if not null DONE
-    // fix root DONE
     // fix tail
-    // fix size
 
     @Override
     public void remove(int index) {
@@ -68,23 +66,26 @@ public class LinkedList<E> implements List<E> {
         if (index == 0) {
             head = head.next;
         }
+        size--;
     }
 
     @Override
     public int size() {
-        ListNode node = head;
-        int size = 0;
-        while (node != null) {
-            node = node.next;
-            size++;
-        }
         return size;
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        StringBuilder sb = new StringBuilder("List: ");
+        if (isEmpty()) {
+            sb.append("[ ]");
+        } else {
+            for (int i = 0; i < size()-1; i++) {
+                sb.append("[" + get(i) + "] ");
+            }
+            sb.append("[" + get(size()-1) + "]");
+        }
+        return sb.toString();
     }
     
     private ListNode getNode(int index) {
