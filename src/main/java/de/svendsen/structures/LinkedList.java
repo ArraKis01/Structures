@@ -9,9 +9,9 @@ public class LinkedList<E> implements List<E> {
     private int size;
 
     private class ListNode {
+        
         private ListNode next;
         private E data;
-
     }
 
     @Override
@@ -79,14 +79,13 @@ public class LinkedList<E> implements List<E> {
 
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("List: ");
-        if (isEmpty()) {
-            sb.append("[ ]");
-        } else {
-            for (int i = 0; i < size() - 1; i++) {
-                sb.append("[" + get(i) + "] ");
+        StringBuilder sb = new StringBuilder();
+        if (!isEmpty()) {
+            for (ListNode node = head; node != null; node = node.next) {
+                sb.append("[" + node.data + "] ");
             }
-            sb.append("[" + get(size() - 1) + "]");
+        } else {
+            sb.append("[ ]");
         }
         return sb.toString();
     }
